@@ -1,0 +1,7 @@
+export { Avatar } from './avatar'
+export { Logo } from './logo'
+export { Plus } from './plus'
+export { BeerIcon } from './beer'
+export { GinIcon } from './gin'
+export { WhiskyIcon } from './whisky'
+export { WineIcon } from './wine'
