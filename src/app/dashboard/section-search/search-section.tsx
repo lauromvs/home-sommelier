@@ -2,11 +2,10 @@ import {
   Wrapper,
   FlexContainer,
   InputSearch,
-  ButtonAddReview,
   ButtonCategory,
 } from './section-search.styles'
-import { Plus } from '@/components/icons/plus'
 import { WhiskyIcon, WineIcon, GinIcon, BeerIcon } from '@/components/icons'
+import { CreateReviewDialog } from './create-review-dialog'
 
 export function SearchSection() {
   return (
@@ -14,10 +13,7 @@ export function SearchSection() {
       <Wrapper>
         <FlexContainer>
           <InputSearch />
-          <ButtonAddReview>
-            <Plus />
-            Adicionar nova avaliação
-          </ButtonAddReview>
+          <CreateReviewDialog />
         </FlexContainer>
       </Wrapper>
       <Wrapper>

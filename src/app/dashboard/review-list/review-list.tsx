@@ -1,15 +1,17 @@
 'use client'
-import { Container } from './review-list.styles'
+import { ReviewItem } from './review-item/review-item'
+import { Container, Content } from './review-list.styles'
 
 export function ReviewList() {
   return (
     <Container>
-      <div>item</div>
-      <div>item</div>
-      <div>item</div>
-      <div>item</div>
-      <div>item</div>
-      <div>item</div>
+      <Content>
+        <ReviewItem category="Whisky" grade={9.7} name="Glenlivit" />
+        <ReviewItem category="Whisky" grade={9.7} name="Glenlivit" />
+        <ReviewItem category="Whisky" grade={9.7} name="Glenlivit" />
+        <ReviewItem category="Whisky" grade={9.7} name="Glenlivit" />
+        <ReviewItem category="Whisky" grade={9.7} name="Glenlivit" />
+      </Content>
     </Container>
   )
 }

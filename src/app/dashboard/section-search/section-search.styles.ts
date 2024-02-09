@@ -41,17 +41,4 @@ const ButtonCategory = styled.button`
   font-weight: 400;
 `
 
-const ButtonAddReview = styled.button`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  border-radius: 8px;
-  background: #2d4a72;
-  color: #ebebd3;
-  padding: 16px;
-  border: none;
-  cursor: pointer;
-  gap: 12px;
-`
-
-export { Wrapper, FlexContainer, InputSearch, ButtonAddReview, ButtonCategory }
+export { Wrapper, FlexContainer, InputSearch, ButtonCategory }
