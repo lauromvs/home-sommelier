@@ -11,15 +11,20 @@ import {
   Button,
   IconButton,
   Fieldset,
+  FieldSetWrapper,
   Label,
   Input,
   Select,
 } from './create-review-dialog.styles'
 import { Plus } from '@/components/icons'
+import { useCreateReviewItem } from '@/hooks/useCreateReviewItem'
+import { ReviewItemModel } from '@/models/ReviewItemModel'
 
 export function CreateReviewDialog() {
-  const [category, setCategory] = useState('')
+  const [category, setCategory] = useState('whisky')
   const [grade, setGrade] = useState('')
+  const [name, setName] = useState('')
+  const [image, setImage] = useState('')
   const [origin, setOrigin] = useState('')
   const [abv, setAbv] = useState('')
   const [color, setColor] = useState('')
@@ -27,21 +32,22 @@ export function CreateReviewDialog() {
   const [nose, setNose] = useState('')
   const [harmonization, setHarmonization] = useState('')
 
+  const { mutate } = useCreateReviewItem()
   function handleSave() {
-    console.log({
+    const newItem: Omit<ReviewItemModel, 'id'> = {
       category,
-      grade,
+      name,
+      grade: Number(grade),
+      image,
       origin,
-      abv,
+      abv: Number(abv),
       color,
       palate,
       nose,
       harmonization,
-    })
-  }
+    }
 
-  function handleCancel() {
-    console.log('cancelado')
+    mutate(newItem)
   }
 
   return (
@@ -56,24 +62,43 @@ export function CreateReviewDialog() {
         <DialogOverlay />
         <DialogContent>
           <DialogTitle>Cadastrar Nova Bebida</DialogTitle>
-          <DialogDescription>
-            Make changes to your profile here. Click save when you're done.
-          </DialogDescription>
+          <DialogDescription></DialogDescription>
+          <FieldSetWrapper>
+            <Fieldset>
+              <Label htmlFor="category">Categoria</Label>
+              <Select
+                onChange={(e) => setCategory(e.target.value)}
+                value={category}
+              >
+                <option value="whisky">Whisky</option>
+                <option value="wine">Vinho</option>
+                <option value="gin">Gin</option>
+                <option value="beer">Cerveja</option>
+              </Select>
+            </Fieldset>
+            <Fieldset>
+              <Label htmlFor="grade">Nota</Label>
+              <Input
+                id="grade"
+                value={grade}
+                onChange={(e) => setGrade(e.target.value)}
+              />
+            </Fieldset>
+          </FieldSetWrapper>
           <Fieldset>
-            <Label htmlFor="category">Categoria</Label>
-            <Select onChange={(e) => setCategory(e.target.value)}>
-              <option value="whisky">Whisky</option>
-              <option value="wine">Vinho</option>
-              <option value="gin">Gin</option>
-              <option value="beer">Cerveja</option>
-            </Select>
+            <Label htmlFor="name">Nome</Label>
+            <Input
+              id="name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+            />
           </Fieldset>
           <Fieldset>
-            <Label htmlFor="grade">Nota</Label>
+            <Label htmlFor="image">Link da imagem</Label>
             <Input
-              id="grade"
-              value={grade}
-              onChange={(e) => setGrade(e.target.value)}
+              id="image"
+              value={image}
+              onChange={(e) => setImage(e.target.value)}
             />
           </Fieldset>
           <Fieldset>
@@ -125,7 +150,6 @@ export function CreateReviewDialog() {
             />
           </Fieldset>
           <Flex>
-            <Button onClick={handleCancel}>Cancelar</Button>
             <Dialog.Close asChild>
               <Button onClick={handleSave}>Savar</Button>
             </Dialog.Close>

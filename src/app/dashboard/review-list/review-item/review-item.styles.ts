@@ -1,15 +1,16 @@
 import styled from 'styled-components'
 
-const Container = styled.div`
+const Container = styled.button<{ $image: string }>`
   border-radius: 16px;
   position: relative;
   width: 330px;
   height: 330px;
-  background-image: url('https://www.casadabebida.com.br/img/products/glenlivet-15-anos-750-ml_1_650.jpg');
+  background-image: url(${(props) => props.$image});
   background-repeat: no-repeat;
   background-size: contain;
   background-color: #fff;
   padding: 16px;
+  border: none;
 `
 
 const ReviewItemInfo = styled.div`
@@ -25,20 +26,13 @@ const ReviewItemInfo = styled.div`
   right: 16px;
   border-radius: 16px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
+  background-color: #fff;
 `
 
-const ReviewItemLike = styled.button<{ $invert?: boolean }>`
-  position: absolute;
-  top: 16px;
-  right: 16px;
-  border-radius: 50%;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 8px;
-  border: none;
-  background-color: ${(props) => (props.$invert ? '#19304F' : '#fff')};
+const StyledText = styled.p<{ $bold?: boolean }>`
+  text-transform: capitalize;
+  line-height: 24px;
+  font-weight: ${(props) => (props.$bold ? 700 : 400)};
 `
 
-export { Container, ReviewItemInfo, ReviewItemLike }
+export { Container, ReviewItemInfo, StyledText }

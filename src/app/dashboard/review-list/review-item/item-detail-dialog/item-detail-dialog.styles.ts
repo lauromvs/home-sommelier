@@ -19,7 +19,6 @@ const DialogOverlay = styled(Dialog.Overlay)`
 `
 
 const DialogContent = styled(Dialog.Content)`
-  overflow-y: auto;
   background-color: white;
   border-radius: 8px;
   box-shadow: hsl(206 22% 7% / 35%) 0px 10px 38px -10px,
@@ -37,49 +36,17 @@ const DialogContent = styled(Dialog.Content)`
   }
 `
 
-const DialogTitle = styled(Dialog.Title)`
-  margin: 0;
-  font-weight: 500;
-  font-size: 17;
-`
-
-const DialogDescription = styled(Dialog.Description)`
-  margin: 10px 0 20px;
-  font-size: 15px;
-  line-height: 1.5;
-`
-
-const Flex = styled.div`
-  display: flex;
-  margin-top: 25px;
-  gap: 16px;
-  justify-content: flex-end;
-`
-
-const Button = styled.button`
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 4px;
-  padding: 0 15px;
-  font-size: 15px;
-  line-height: 1px;
-  font-weight: 500px;
-  height: 35px;
-`
-
-const ButtonAddReview = styled.button`
-  margin-left: auto;
+const TitleWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-radius: 8px;
-  background: #2d4a72;
-  color: #ebebd3;
-  padding: 16px;
-  border: none;
-  cursor: pointer;
-  gap: 12px;
+  margin-block: 16px;
+`
+
+const DialogTitle = styled(Dialog.Title)`
+  margin: 0;
+  font-weight: 700;
+  font-size: 17;
 `
 
 const IconButton = styled.button`
@@ -95,18 +62,8 @@ const IconButton = styled.button`
   top: 10px;
   right: 10px;
   &:hover {
-    background-color: violet;
+    background-color: #2d4a7233;
   }
-  &:focus {
-    box-shadow: 0 0 0 2px violet;
-  }
-`
-
-const FieldSetWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
 `
 
 const Fieldset = styled.fieldset`
@@ -121,6 +78,7 @@ const Label = styled.label`
   font-size: 16px;
   color: #19304f;
   text-align: right;
+  font-weight: 500;
 `
 
 const Input = styled.input`
@@ -135,44 +93,26 @@ const Input = styled.input`
   color: #2d4a72;
   border-radius: 8px;
   border: none;
-
-  &:focus {
-    box-shadow: 0 0 0 2px #19304f;
-  }
+  outline: none;
 `
 
-const Select = styled.select`
-  width: 100%;
-  min-width: 200px;
+const DeleteButton = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 4;
-  padding-inline: 8px;
-  padding-block: 4px;
-  color: violet;
-  height: 40px;
-  background: #c5cbc0;
-  color: #2d4a72;
-  border-radius: 8px;
   border: none;
-
-  &:focus {
-    box-shadow: 0 0 0 2px #19304f;
-  }
+  background: none;
+  color: #2d4a72;
 `
+
 export {
   DialogOverlay,
   DialogContent,
+  TitleWrapper,
   DialogTitle,
-  DialogDescription,
-  Flex,
-  ButtonAddReview,
-  Button,
   IconButton,
   Fieldset,
-  FieldSetWrapper,
   Label,
   Input,
-  Select,
+  DeleteButton,
 }

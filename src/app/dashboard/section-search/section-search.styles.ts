@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 const Wrapper = styled.div`
   margin-top: 32px;
@@ -16,14 +16,7 @@ const FlexContainer = styled.div`
   justify-content: space-between;
 `
 
-const InputSearch = styled.input`
-  border-radius: 8px;
-  background: #c5cbc0;
-  color: #2d4a72;
-  border: none;
-  height: 48px;
-`
-const ButtonCategory = styled.button`
+const ButtonCategory = styled.button<{ $selected: boolean }>`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -39,6 +32,16 @@ const ButtonCategory = styled.button`
   font-size: 24px;
   font-style: normal;
   font-weight: 400;
+
+  ${(props) =>
+    props.$selected &&
+    css`
+      background-color: #2d4a72;
+      color: #ebebd3;
+      & + svg {
+        color: #ebebd3;
+      }
+    `}
 `
 
-export { Wrapper, FlexContainer, InputSearch, ButtonCategory }
+export { Wrapper, FlexContainer, ButtonCategory }

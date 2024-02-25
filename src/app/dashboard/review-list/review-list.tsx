@@ -1,16 +1,25 @@
 'use client'
 import { ReviewItem } from './review-item/review-item'
 import { Container, Content } from './review-list.styles'
+import { useReviewItemList } from '@/hooks/useReviewItemList'
 
-export function ReviewList() {
+interface ReviewListProps {
+  filter: string
+}
+
+export function ReviewList({ filter }: ReviewListProps) {
+  const { list } = useReviewItemList()
+
+  const reviewList = !filter
+    ? list
+    : list?.filter((item) => item.category === filter)
+
   return (
     <Container>
       <Content>
-        <ReviewItem category="Whisky" grade={9.7} name="Glenlivit" />
-        <ReviewItem category="Whisky" grade={9.7} name="Glenlivit" />
-        <ReviewItem category="Whisky" grade={9.7} name="Glenlivit" />
-        <ReviewItem category="Whisky" grade={9.7} name="Glenlivit" />
-        <ReviewItem category="Whisky" grade={9.7} name="Glenlivit" />
+        {reviewList?.map((item) => (
+          <ReviewItem reviewItem={item} />
+        ))}
       </Content>
     </Container>
   )
